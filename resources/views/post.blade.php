@@ -211,7 +211,7 @@
                 </div>
             </div>
         </div>
-        <div class="ranking col-12 col-md-4">
+        <div class="ranking col-12 col-md-4 pb-3">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">ユーザランキング(いいね)</h5>
