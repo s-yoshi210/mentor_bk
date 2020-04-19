@@ -11,7 +11,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-12 col-md-6 order-2 order-md-1 border-right">
+        <div class="col-12 col-md-6 order-2 order-md-1 pt-5 border-right">
             <h3>申請一覧</h3>
             <div class="list-group">
                 <a href="#" class="list-group-item list-group-item-action pb-2">
@@ -70,7 +70,7 @@
                 </a>
             </div>
         </div>
-        <div class="col-12 col-md-6 order-1 order-md-2">
+        <div class="col-12 col-md-6 order-1 order-md-2 pt-5">
             <h3>マッチング済みユーザー</h3>
             <div class="list-group">
                 <a href="#" class="list-group-item list-group-item-action pb-2">
