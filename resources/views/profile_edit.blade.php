@@ -9,7 +9,7 @@
 @include('layouts.menubar')
 
 @section('content')
-<div class="container form-user">
+<div class="container form-user pt-5">
     <form action="">
         <h3 class="text-center">プロフィール編集</h3>
         <div class="profile_image pt-3 text-center">
