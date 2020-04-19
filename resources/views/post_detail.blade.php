@@ -159,7 +159,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-2"><img src="/images/user-circle-solid.svg" width="30" height="30" alt=""></div>
-                            <div class="col-5"><a class="card-link">Yoshitaka</a></div>
+                            <div class="col-5"><a class="card-link" href="/profile">Yoshitaka</a></div>
                             <div class="col-5"><button type="button" class="btn btn-sm btn-success">フォロー中</button></div>
                         </div>
                         <div class="row pt-3">
