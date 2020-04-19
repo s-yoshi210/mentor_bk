@@ -1,0 +1,38 @@
+.top {
+  height: 50vh;
+  width: 100%;
+}
+.top .top-visual {
+  height: 100%;
+  position: relative;
+}
+.top .top-visual .message {
+  position: absolute;
+  left: 7%;
+  top: 35%;
+  padding-right: 1rem;
+}
+.top .top-visual .message p {
+  font-size: 1.5rem;
+}
+.top .top-content .fa-child {
+  font-size: 2.5rem;
+}
+.top .top-content p {
+  font-size: 1.5rem;
+}
+@media (min-width: 768px) {
+  .top {
+    height: 100vh;
+  }
+  .top .top-visual .message {
+    left: 12%;
+    top: 35%;
+  }
+  .top .top-visual .message p {
+    font-size: 2rem;
+  }
+  .top .top-content p {
+    font-size: 2rem;
+  }
+}

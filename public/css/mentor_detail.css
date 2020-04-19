@@ -1,0 +1,9 @@
+@media (min-width: 768px) {
+  nav {
+    height: 100vh;
+  }
+  main .container {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}

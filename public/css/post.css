@@ -1,0 +1,14 @@
+@media (min-width: 768px) {
+  main .container {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+.ranking {
+  padding-top: 3rem;
+}
+@media (min-width: 768px) {
+  .ranking {
+    padding-top: 7rem;
+  }
+}
