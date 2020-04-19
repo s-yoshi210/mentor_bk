@@ -9,9 +9,9 @@
 @include('layouts.menubar')
 
 @section('content')
-<div class="container">
+<div class="container py-5">
     <div class="row">
-        <div class="col-3 border-right">
+        <div class="col-12 col-md-3 border-right">
             <h5>メンター/メンティー</h5>
             <div class="nav flex-column nav-pills pt-4" id="mentor-list-tab" role="tablist" aria-orientation="vertical">
                 <a class="nav-link active" id="mentor-list-1-tab" data-toggle="pill" href="#mentor-list-1" role="tab" aria-controls="mentor-list-1" aria-selected="true">UserName1</a>
@@ -19,21 +19,21 @@
                 <a class="nav-link" id="mentor-list-3-tab" data-toggle="pill" href="#mentor-list-3" role="tab" aria-controls="mentor-list-3" aria-selected="false">UserName3</a>
             </div>
         </div>
-        <div class="col-9">
+        <div class="col-12 col-md-9">
             <div class="row justify-content-end">
-                <div class="col-3">
+                <div class="col-6 col-md-3 pt-3">
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#mentorThreadModal">スレッド作成</button>
                 </div>
             </div>
             <div class="tab-content pt-3" id="v-pills-tabContent">
                 <div class="tab-pane fade show active" id="mentor-list-1" role="tabpanel" aria-labelledby="mentor-list-1-tab">
                     <div class="list-group">
-                        <a href="#" class="list-group-item list-group-item-action">
+                        <a href="/mentor_detail" class="list-group-item list-group-item-action">
                             <div class="row align-items-center">
-                                <div class="col-1">
+                                <div class="col-2 col-md-1">
                                     <img src="/images/user-circle-solid.svg" width="30" height="30" alt="">
                                 </div>
-                                <div class="col-11">
+                                <div class="col-10 col-md-11">
                                     <div class="row">
                                         <div class="col-12"><h5>スレッドタイトル</h5></div>
                                     </div>
@@ -45,12 +45,12 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action">
+                        <a href="/mentor_detail" class="list-group-item list-group-item-action">
                             <div class="row align-items-center">
-                                <div class="col-1">
+                                <div class="col-2 col-md-1">
                                     <img src="/images/user-circle-solid.svg" width="30" height="30" alt="">
                                 </div>
-                                <div class="col-11">
+                                <div class="col-10 col-md-11">
                                     <div class="row">
                                         <div class="col-12"><h5>スレッドタイトル</h5></div>
                                     </div>

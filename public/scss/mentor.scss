@@ -1,6 +1,9 @@
+
 @media (min-width: 768px) {
-    main .container {
-        padding-left: 100px;
-        padding-right: 100px;
+    main {
+        .container {
+            padding-left: 100px;
+            padding-right: 100px;
+        }
     }
 }
