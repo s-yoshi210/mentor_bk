@@ -21,6 +21,12 @@
                             </a>
                         </li>
                         <li class="nav-item pb-2">
+                            <a class="nav-link text-white" href="/matching">
+                                <i class="fas fa-people-carry pr-3"></i>
+                                マッチング
+                            </a>
+                        </li>
+                        <li class="nav-item pb-2">
                             <a class="nav-link text-white" href="/mentor">
                                 <i class="fas fa-people-carry pr-3"></i>
                                 メンター
