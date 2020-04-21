@@ -11,14 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('top');
-});
-
-/* トップ */
-Route::get('top', function () {
-    return view('top');
-});
+/* TOP */
+Route::get('/', 'TopController@index');
 
 /* ログイン・アカウント作成 */
 Route::get('signin', function () {
