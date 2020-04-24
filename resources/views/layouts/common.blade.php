@@ -1,20 +1,29 @@
 <!doctype html>
-<html lang="ja">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     @yield('head')
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            @yield('menubar')
+    @guest
+        <!-- ユーザー認証されていない場合 -->
+        <main class="w-100">
+            @yield('content')
+        </main>
+    @else
+        <!-- ユーザー認証されている場合 -->
+        <div class="container-fluid">
+            <div class="row">
 
-            <main class="col-12 col-md-10">
-                @yield('content')
-            </main>
+                @yield('menubar')
+
+                <main class="col-12 col-md-10 w-100">
+                    @yield('content')
+                </main>
+            </div>
         </div>
-    </div>
+    @endguest
 
-    <script src="js/jquery-3.4.1.slim.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('js/jquery-3.4.1.slim.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 </body>
 </html>

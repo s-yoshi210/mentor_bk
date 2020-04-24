@@ -1,77 +1,54 @@
-@extends('layouts.app')
+@extends('layouts.common')
+
+@section('pageCss')
+    <link rel="stylesheet" href="{{ __('css/account.css') }}">
+@endsection
+
+@include('layouts.head')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+    <div class="form-account">
+        <div class="container">
+            <form method="POST" action="{{ route('register') }}">
+                @csrf
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+                <h3 class="text-center mb-4 font-weight-normal">アカウント作成</h3>
+                <div class="form-group">
+                    <label for="user-name">ユーザー名</label>
+                    <input id="user-name" type="text" class="form-control @error('user-name') is-invalid @enderror" name="user_name" value="{{ old('user-name') }}" required autocomplete="user-name" autofocus placeholder="ユーザー名を入力">
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                    @error('user-name')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
-            </div>
+                <div class="form-group">
+                    <label for="email">メールアドレス</label>
+                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="メールアドレスを入力">
+
+                    @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label for="password">パスワード</label>
+                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="パスワード(確認用)を入力">
+
+                    @error('password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label for="password-confirm">パスワード(確認用)</label>
+                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="パスワードを入力">
+                </div>
+                <button type="submit" class="btn btn-success btn-lg btn-block mt-4">新規登録</button>
+            </form>
         </div>
     </div>
-</div>
 @endsection
