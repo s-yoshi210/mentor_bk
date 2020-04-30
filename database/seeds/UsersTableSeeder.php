@@ -13,11 +13,34 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'user_name' => str_random(10),
-            'mail' => str_random(10).'@gmail.com',
+        $param = [
+            'user_name' => 'Masato Takahashi',
+            'email' => 'Masato@gmail.com',
             'password' => bcrypt('secret'),
             'admin_flag' => 0,
-        ]);
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
+        ];
+        DB::table('users')->insert($param);
+
+        $param = [
+            'user_name' => 'Youhei Kotani',
+            'email' => 'Youhei@gmail.com',
+            'password' => bcrypt('secret'),
+            'admin_flag' => 0,
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
+        ];
+        DB::table('users')->insert($param);
+
+        $param = [
+            'user_name' => 'Yoshitaka Shimazu',
+            'email' => 'y.shimazu210@gmail.com',
+            'password' => bcrypt('secret'),
+            'admin_flag' => 0,
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
+        ];
+        DB::table('users')->insert($param);
     }
 }

@@ -148,7 +148,8 @@ return [
     'attributes' => [
         'user_name' => 'ユーザー名',
         'email' => 'メールアドレス',
-        'password' => 'パスワード'
+        'password' => 'パスワード',
+        'post_content' => '投稿内容'
     ],
 
 ];

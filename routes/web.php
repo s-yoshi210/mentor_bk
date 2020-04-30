@@ -29,14 +29,13 @@ Route::get('/', 'TopController@index');
 
 /* 投稿 */
 Route::get('/post', 'PostController@index')->name('post');
+Route::post('/post', 'PostController@store')->name('store');
 
 Route::get('post_detail', function () {
     return view('post_detail');
 });
 
-Route::get('post_new', function () {
-    return view('post_new');
-});
+
 
 /* メンター */
 Route::get('/matching', 'MatchingController@index')->name('matching');
