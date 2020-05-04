@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
 use App\Models\SelfCount;
 use Dotenv\Validator;
 //use Illuminate\Support\Facades\Validator;
@@ -22,8 +23,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        $items = Post::all();
-        return view('post.index', ['items' => $items]);
+
+        // 「新着」一覧
+        $posts = Post::withCount('comments', 'likes', 'takes')->latest()->get();
+        return view('post.index', ['posts' => $posts]);
     }
 
     /**
@@ -44,17 +47,6 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
-
-//        \Log::debug($request->give);
-//        \Log::debug($request->post_content);
-//
-//        $validator = Validator::make($request->all(), [
-//            'post_content' => 'required|max:1000'
-//        ]);
-//        if ($validator->fails()) {
-//
-//        }
-
         // バリデータ取得
         $validator = $request->getValidator();
         if ($validator->fails()) {
@@ -64,7 +56,6 @@ class PostController extends Controller
         }
 
         DB::transaction( function () use ($request) {
-
             // 投稿登録
             $post = new Post;
             $post->user_id = Auth::id();

@@ -35,74 +35,41 @@
 
                         <!-- フォロー -->
                         <div class="tab-pane active" id="nav-follow" role="tabpanel" aria-labelledby="nav-follow-tab">
-                            @foreach($items as $item)
+                            @foreach($posts as $post)
                                 <div class="card">
-                                    <a href="/post_detail" class="card-body text-reset text-decoration-none pb-2">
+                                    <div class="card-body pb-2">
                                         <div class="row">
                                             <div class="col-1 pl-1 pl-md-3">
                                                 <img src="/images/user-circle-solid.svg" width="30" height="30" alt="">
                                             </div>
                                             <div class="col-11">
                                                 <div class="row justify-content-between">
-                                                    <div class="col-7 pr-1">{{ $item->user_id }}</div>
-                                                    <div class="col-5 pr-0"><small>{{ $item->created_at }}</small></div>
+                                                    <div class="col-7 pr-1">{{ $post->user->user_name }}</div>
+                                                    <div class="col-5 pr-0"><small>{{ $post->created_at->format('n月j日 G:i') }}</small></div>
                                                 </div>
                                                 <div class="row py-3">
                                                     <div class="col-11">
                                                         <p class="card-text">
-                                                            {{ $item->content }}
+                                                            {{ $post->content }}
                                                         </p>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-3 col-md-2 px-0">
-                                                        <button class="btn pt-0" data-toggle="modal" data-target="#postCommentModal"><i class="far fa-comment"></i><span> 12</span></button>
+                                                        <button class="btn pt-0" data-toggle="modal" data-target="#postCommentModal"><i class="far fa-comment"></i><span> {{ $post->comments_count }}</span></button>
                                                     </div>
                                                     <div class="col-3 col-md-2 px-0">
-                                                        <button class="btn pt-0"><i class="far fa-heart"></i><span> 12</span></button>
+                                                        <button class="btn pt-0"><i class="far fa-heart"></i><span> {{ $post->likes_count }}</span></button>
                                                     </div>
                                                     <div class="col-3 col-md-2 px-0">
-                                                        <button class="btn pt-0"><i class="far fa-handshake"></i><span> 12</span></button>
+                                                        <button class="btn pt-0"><i class="far fa-handshake"></i><span> {{ $post->takes_count }}</span></button>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            @endforeach
-                            <div class="card">
-                                <a href="#" class="card-body text-reset text-decoration-none pb-2">
-                                    <div class="row">
-                                        <div class="col-1 pl-1 pl-md-3">
-                                            <img src="/images/user-circle-solid.svg" width="30" height="30" alt="">
-                                        </div>
-                                        <div class="col-11">
-                                            <div class="row justify-content-between">
-                                                <div class="col-7 pr-1">Yoshitaka Shimazu</div>
-                                                <div class="col-5 pr-0"><small>4月10日 10:32</small></div>
-                                            </div>
-                                            <div class="row py-3">
-                                                <div class="col-11">
-                                                    <p class="card-text">
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-3 col-md-2 px-0">
-                                                    <button class="btn pt-0" data-toggle="modal" data-target="#postCommentModal"><i class="far fa-comment"></i><span> 12</span></button>
-                                                </div>
-                                                <div class="col-3 col-md-2 px-0">
-                                                    <button class="btn pt-0"><i class="far fa-heart"></i><span> 12</span></button>
-                                                </div>
-                                                <div class="col-3 col-md-2 px-0">
-                                                    <button class="btn pt-0"><i class="far fa-handshake"></i><span> 12</span></button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </a>
-                            </div>
+                                </div>
+                            @endforeach
                         </div>
 
                         <!-- 新着 -->

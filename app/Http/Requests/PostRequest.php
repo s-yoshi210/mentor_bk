@@ -16,7 +16,6 @@ class PostRequest extends FormRequest
      */
     public function authorize()
     {
-        \Log::debug($this->path());
         if ($this->path() == 'post')
         {
             return true;

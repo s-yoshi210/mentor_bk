@@ -10,10 +10,16 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    /**
+     * プライマリーキー 変更
+     * デフォルトは「id」であるため
+     *
+     * @var string
+     */
     protected $primaryKey = 'user_id';
 
     /**
-     * The attributes that are mass assignable.
+     * 書き換えてもいい情報に許可を与える
      *
      * @var array
      */
@@ -38,4 +44,24 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * ユーザーの投稿を取得する
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function posts()
+    {
+        return $this->hasMany('App\Models\Post','user_id');
+    }
+
+//    public function post()
+//    {
+//        return $this->hasOne('App\Models\Post', 'user_id', 'user_id');
+//    }
+//
+//    public function posts()
+//    {
+//        return $this->hasMany('App\Models\Post', 'user_id');
+//    }
 }

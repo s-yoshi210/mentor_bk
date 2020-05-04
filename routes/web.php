@@ -13,23 +13,13 @@
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
 /* TOP */
-Route::get('/', 'TopController@index');
-
-/* ログイン・アカウント作成 */
-//Route::get('signin', function () {
-//    return view('signin');
-//});
-
-//Route::get('account', function () {
-//    return view('account');
-//});
+Route::get('/', 'TopController@index')->name('top');
 
 /* 投稿 */
-Route::get('/post', 'PostController@index')->name('post');
-Route::post('/post', 'PostController@store')->name('store');
+Route::get('post', 'PostController@index')->name('post');
+Route::post('post', 'PostController@store')->name('store');
+
 
 Route::get('post_detail', function () {
     return view('post_detail');
