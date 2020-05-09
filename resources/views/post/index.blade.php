@@ -35,7 +35,7 @@
 
                         <!-- フォロー -->
                         <div class="tab-pane active" id="nav-follow" role="tabpanel" aria-labelledby="nav-follow-tab">
-                            @foreach($posts as $post)
+                            @foreach($follow_posts as $post)
                                 <div class="card">
                                     <div class="card-body pb-2">
                                         <div class="row">
@@ -74,88 +74,69 @@
 
                         <!-- 新着 -->
                         <div class="tab-pane" id="nav-new" role="tabpanel" aria-labelledby="nav-new-tab">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-1 pl-1 pl-md-3">
-                                            <img src="/images/user-circle-solid.svg" width="30" height="30" alt="">
-                                            <div class="v_line_fix"></div>
-                                        </div>
-                                        <div class="col-11">
-                                            <div class="row justify-content-between">
-                                                <div class="col-7 pr-1"><a href="#" class="card-link text-dark">Yoshitaka Shimazu</a></div>
-                                                <div class="col-5 pr-0"><p>4月10日 10:32</p></div>
+                            @foreach($posts as $post)
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-1 pl-1 pl-md-3">
+                                                <img src="/images/user-circle-solid.svg" width="30" height="30" alt="">
+                                                <div class="v_line_fix"></div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-11">
-                                                    <p>
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id.
-                                                    </p>
+                                            <div class="col-11">
+                                                <div class="row justify-content-between">
+                                                    <div class="col-7 pr-1"><a href="#" class="card-link text-dark">{{ $post->user->user_name }}</a></div>
+                                                    <div class="col-5 pr-0"><p>{{ $post->created_at->format('n月j日 G:i') }}</p></div>
                                                 </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-3 col-md-2"><i class="far fa-comment"></i> 12</div>
-                                                <div class="col-3 col-md-2"><i class="far fa-heart"></i> 11</div>
-                                                <div class="col-3 col-md-2"><i class="far fa-handshake"></i> 5</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row pt-2">
-                                        <div class="col-1 pt-3 pl-1 pl-md-3">
-                                            <img src="/images/user-circle-solid.svg" width="30" height="30" alt="">
-                                        </div>
-                                        <div class="col-11 border-top">
-                                            <div class="row pt-3 justify-content-between">
-                                                <div class="col-7 pr-1"><a href="#" class="card-link text-dark">Yoshitaka Shimazu</a></div>
-                                                <div class="col-5 pr-0"><p>4月10日 10:32</p></div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-11">
-                                                    <p>
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id.
-                                                    </p>
+                                                <div class="row">
+                                                    <div class="col-11">
+                                                        <p>
+                                                            {{ $post->content }}
+                                                        </p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-3 col-md-2"><i class="far fa-comment"></i> 12</div>
-                                                <div class="col-3 col-md-2"><i class="far fa-heart"></i> 11</div>
-                                                <div class="col-3 col-md-2"><i class="far fa-handshake"></i> 5</div>
+                                                <div class="row">
+                                                    <div class="col-3 col-md-2"><i class="far fa-comment"></i> {{ $post->comments_count }}</div>
+                                                    <div class="col-3 col-md-2"><i class="far fa-heart"></i> {{ $post->likes_count }}</div>
+                                                    <div class="col-3 col-md-2"><i class="far fa-handshake"></i> {{ $post->takes_count }}</div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endforeach
                         </div>
 
                         <!-- 注目 -->
                         <div class="tab-pane fade" id="nav-attention" role="tabpanel" aria-labelledby="nav-attention-tab">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-1 pl-1 pl-md-3">
-                                            <img src="/images/user-circle-solid.svg" width="30" height="30" alt="">
-                                        </div>
-                                        <div class="col-11">
-                                            <div class="row justify-content-between">
-                                                <div class="col-7 pr-1"><a href="#" class="card-link text-dark">Yoshitaka Shimazu</a></div>
-                                                <div class="col-5 pr-0"><p>4月10日 10:32</p></div>
+                            @foreach($attention_posts as $post)
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-1 pl-1 pl-md-3">
+                                                <img src="/images/user-circle-solid.svg" width="30" height="30" alt="">
                                             </div>
-                                            <div class="row">
-                                                <div class="col-11">
-                                                    <p>
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id.
-                                                    </p>
+                                            <div class="col-11">
+                                                <div class="row justify-content-between">
+                                                    <div class="col-7 pr-1"><a href="#" class="card-link text-dark">{{ $post->user->user_name }}</a></div>
+                                                    <div class="col-5 pr-0"><p>{{ $post->created_at->format('n月j日 G:i') }}</p></div>
                                                 </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-3 col-md-2"><i class="far fa-comment"></i> 12</div>
-                                                <div class="col-3 col-md-2"><i class="far fa-heart"></i> 11</div>
-                                                <div class="col-3 col-md-2"><i class="far fa-handshake"></i> 5</div>
+                                                <div class="row">
+                                                    <div class="col-11">
+                                                        <p>
+                                                            {{ $post->content }}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-3 col-md-2"><i class="far fa-comment"></i> {{ $post->comments_count }}</div>
+                                                    <div class="col-3 col-md-2"><i class="far fa-heart"></i> {{ $post->likes_count }}</div>
+                                                    <div class="col-3 col-md-2"><i class="far fa-handshake"></i> {{ $post->takes_count }}</div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
 
@@ -204,7 +185,7 @@
 @component('components.post_create')
 @endcomponent
 
-@component('components.comment')
+@component('post.comment')
 @endcomponent
 
 @endsection

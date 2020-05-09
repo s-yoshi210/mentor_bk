@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Follower;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\SelfCount;
@@ -12,6 +13,8 @@ use App\Http\Requests\PostRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Carbon\Carbon;
+use function Sodium\increment;
 
 
 class PostController extends Controller
@@ -24,9 +27,26 @@ class PostController extends Controller
     public function index()
     {
 
+        $user_id = Auth::id();
+
+        // フォロー一覧
+        $followingIds = Follower::followingIds($user_id);
+        $follow_posts = Post::followerPosts($user_id, $followingIds);
+
         // 「新着」一覧
         $posts = Post::withCount('comments', 'likes', 'takes')->latest()->get();
-        return view('post.index', ['posts' => $posts]);
+
+        // 「注目」一覧
+        $target_from = Carbon::now()->subMonth();
+        $target_to = Carbon::now();
+        $attention_posts = Post::whereBetween('created_at', [$target_from, $target_to])
+                ->withCount('likes')
+                ->having('likes_count', '>', 0)
+                ->orderBy('likes_count', 'desc')
+                ->get();
+
+        return view('post.index', ['follow_posts' => $follow_posts, 'posts' => $posts,'attention_posts' => $attention_posts]);
+
     }
 
     /**
@@ -65,9 +85,8 @@ class PostController extends Controller
             if ($request->give == 'on') {
                 // Giveカウント登録
                 SelfCount::updateOrCreate(
-                    ['user_id' => Auth::id()],
-                    ['give_count' => DB::raw('give_count + 1')]
-                );
+                    ['user_id' => Auth::id()]
+                )->increment('give_count');
             }
         });
 
@@ -80,9 +99,11 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($post_id)
     {
-        //
+        $post = Post::findOrFail($post_id);
+
+        return view('post.comment')->with('post', $post);
     }
 
     /**

@@ -20,6 +20,7 @@ Route::get('/', 'TopController@index')->name('top');
 Route::get('post', 'PostController@index')->name('post');
 Route::post('post', 'PostController@store')->name('store');
 
+//Route::get('post/{post_id}', 'PostController@show')->name('show');
 
 Route::get('post_detail', function () {
     return view('post_detail');

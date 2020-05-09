@@ -3,6 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Log;
+use phpDocumentor\Reflection\Types\Collection;
+use PhpParser\Node\Expr\Cast\Object_;
 
 class Post extends Model
 {
@@ -54,4 +57,19 @@ class Post extends Model
     {
         return $this->hasMany('App\Models\Take', 'post_id');
     }
+
+    /**
+     * フォローしているユーザーの投稿を取得する
+     */
+    public static function followerPosts(int $user_id, Object $following_ids)
+    {
+        foreach ($following_ids as $id)
+        {
+            $following_id[] = $id->followed_id;
+        }
+        $following_id[] = $user_id;
+
+        return Post::withCount('comments', 'likes', 'takes')->whereIn('user_id', $following_id)->orderBy('created_at', 'desc')->get();
+    }
+
 }
