@@ -14,10 +14,10 @@
 
                 <h3 class="text-center mb-4 font-weight-normal">アカウント作成</h3>
                 <div class="form-group">
-                    <label for="user-name">ユーザー名</label>
-                    <input id="user-name" type="text" class="form-control @error('user-name') is-invalid @enderror" name="user_name" value="{{ old('user-name') }}" required autocomplete="user-name" autofocus placeholder="ユーザー名を入力">
+                    <label for="user_name">ユーザー名</label>
+                    <input id="user_name" type="text" class="form-control @error('user_name') is-invalid @enderror" name="user_name" value="{{ old('user_name') }}" required autocomplete="user_name" autofocus placeholder="ユーザー名を入力">
 
-                    @error('user-name')
+                    @error('user_name')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
